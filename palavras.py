@@ -10,7 +10,7 @@ alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 with open (filename, "r", encoding="utf-8") as f:
 #with open abre e fecha sozinho o arquivo.
     for line in f:
-        palavras.append(line.lower())
+        palavras.append(line.lower().strip())
 print ("Temos", len(palavras), "palavras no arquivo.")
 
 
@@ -42,12 +42,35 @@ def cada_letra_começa (alfabeto, palavras):
 
 print("-" *20)               
 
-#identifique as palavras que começam com a mesma 3 letras do seu nome. salva separado
+#identifique as palavras que começam com a mesma 3 letras do seu nome. salva separado ok,ok
+def tres_letras_começa (palavras):
+    """esperado uma lista de alfabeto e uma lista de palavras"""
+    for palavra in palavras:
+        if palavra[ :3] == "pri":
+            with open ("palavras_pri.txt", "a") as f:
+                f.write(palavra)
+                 
 
+#identifique as palavras que possuem todas as letras do seu nome. salva separado ok,ok
+def priscila_tudo (palavras):
+    for palavra in palavras:
+        if "priscila" in palavra:
+            with open ("palavras_priscila.txt", "a") as f:
+                f.write(palavra)
+                  
 
+#identifique todas as palavras que sao palindromos . salva separado ok,ok
+def ver_palindromos(palavras):
+    for palavra in palavras:
+        if palavra == palavra[::-1]:#[::-1] é de traz pra frente.
+            with open("palindromos.txt", "a") as f:
+                f.write(palavra)
+                f.write("\n")
 
-#identifique as palavras que possuem todas as letras do seu nome. salva separado
-#identifique todas as palavras que sao palindromos . salva separado
+print("-" *20)
 
-#cada_letra_no_arquivo(alfabeto, palavras)
-#cada_letra_começa(alfabeto, palavras)
+cada_letra_no_arquivo(alfabeto, palavras)
+cada_letra_começa(alfabeto, palavras)
+tres_letras_começa(palavras)
+priscila_tudo(palavras)
+ver_palindromos(palavras)
